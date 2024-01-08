@@ -1,0 +1,353 @@
+/******************************************************************************
+ * CSS variables                                                              *
+ ******************************************************************************/
+:root {
+    --brand-color: mediumpurple;
+    --outline-color: #ccc;
+
+    --transition-easing: 100ms ease;
+}
+
+/******************************************************************************
+ * General styles                                                             *
+ ******************************************************************************/
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Using margin instead of padding causes the page to be taller than the browser window,
+       which creates an unnecessary scrollbar. */
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.header {
+    font-size: 2em;
+    font-weight: bold;
+    padding-top: 1.3rem;
+    color: #512682;
+}
+
+button {
+    box-sizing: border-box;
+
+    width: min-content;
+    min-width: 10rem;
+    height: 2.5rem;
+    min-height: 2.5rem;
+
+    padding: 0 1rem;
+
+    border: 1px solid var(--outline-color);
+    border-radius: 0.5rem;
+
+    font-weight: bold;
+
+    color: black;
+    background: transparent;
+    transition: background var(--transition-easing), border-color var(--transition-easing);
+}
+
+button:hover, button:focus-visible, button:active {
+    border-width: 2px;
+    padding: 0 calc(1rem - 1px);
+    border-color: var(--brand-color);
+    outline: none
+}
+
+button:active {
+    background: var(--brand-color);
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types */
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+    box-sizing: border-box;
+    display: inline-block;
+
+    width: 100%;
+    min-width: 0;
+    height: 2.5rem;
+
+    padding: 0 1rem;
+
+    border: 1px solid var(--outline-color);
+    border-radius: 0.5rem;
+
+    transition: border-color var(--transition-easing);
+}
+
+input[type="date"]:focus-visible,
+input[type="datetime-local"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="month"]:focus-visible,
+input[type="number"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="search"]:focus-visible,
+input[type="tel"]:focus-visible,
+input[type="text"]:focus-visible,
+input[type="time"]:focus-visible,
+input[type="url"]:focus-visible,
+input[type="week"]:focus-visible {
+    border-width: 2px;
+    padding: 0 calc(1rem - 1px);
+    border-color: var(--brand-color);
+    outline: none;
+}
+
+/******************************************************************************
+ * Hello page                                                                 *
+ ******************************************************************************/
+.hello-page {
+    background: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+}
+
+.hello-page button {
+    margin-top: 1rem;
+}
+
+/******************************************************************************
+ * Login page                                                                 *
+ ******************************************************************************/
+.login-page {
+    flex: 1;
+    max-width: 32rem;
+    gap: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+
+    padding-bottom: 5rem;
+}
+
+.login-page input {
+    margin-bottom: 0.5rem;
+}
+
+/******************************************************************************
+ * File upload page                                                           *
+ ******************************************************************************/
+.file-storage-page {
+    flex: 1;
+    max-width: 32rem;
+    gap: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+}
+
+.file-upload {
+    margin-bottom: 30px;
+}
+
+.logo {
+    max-width: 750px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+
+.logo-without-text {
+    max-width: 125px;
+    max-height: 80px;
+    min-width: 125px;
+    min-height: 80px;
+    width: auto;
+    height: auto;
+}
+
+.file-storage-page button:hover, .file-storage-page button:focus-visible {
+    border-color: var(--brand-color);
+    border-width: 2px;
+    outline: none
+}
+
+/******************************************************************************
+ * File View page                                                           *
+ ******************************************************************************/
+
+.fileview-page {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    grid-template-rows: min-content 1fr;
+    gap: 1rem 2rem;
+
+    height: 100%;
+    width: 100%;
+
+    /* Extra margin to make it look a bit nicer */
+    margin: 0 1rem;
+}
+
+.fileview-page .header-container {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    /* Extra margin to make it look a bit nicer */
+    margin: 1rem 0;
+}
+
+.fileview-page .header-container .header {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.fileview-page .sidebar,
+.fileview-page .filters-container,
+.fileview-page .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fileview-page .sidebar {
+    box-sizing: border-box;
+    border-right: 1px solid var(--outline-color);
+    padding-right: 2rem;
+}
+
+.fileview-page .section-text {
+    font-size: 1.3em;
+    margin-top: 1.5rem;
+}
+
+.fileview-page .section-text:first-child {
+    margin-top: 0;
+}
+
+.fileview-page .current-path-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fileview-page .current-path {
+    font-size: 1.3em;
+}
+
+.fileview-page .section-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section-element.file-element {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    gap: 0.5rem;
+
+    box-sizing: border-box;
+    width: 20rem;
+    height: 5rem;
+
+    padding: 0.5rem 1rem;
+
+    border: 1px solid var(--outline-color);
+    border-radius: 0.5rem;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    color: black;
+    text-decoration: none;
+    background: white;
+}
+
+.section-element.file-element .drag-handle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    margin: 0 -0.5rem;
+
+    font-weight: normal;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+/* Not sure how these class names ended up like this, but whatever. */
+.section-element.file-element .file-element {
+    flex: 1;
+    max-height: 100%;
+
+    /* Handle text overflow. This is deprecated and also the only thing that works. */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    /* Forward compatibility (maybe?) */
+    line-clamp: 3;
+}
+
+.file-more-button {
+    border: none;
+
+    min-width: 2em;
+    width: 2em;
+
+    padding: 0;
+
+    background: transparent;
+    font-size: large;
+ }
+
+.file-more-button:hover {
+    background: #ccc;
+    padding: 0;
+}
+
+.Wt-popupmenu {
+    padding: 0.5em 0;
+    width: 8em;
+    text-align: center;
+    border-radius: 8px;
+    border-color: var(--brand-color);
+}
+
+.Wt-popupmenu .active {
+    background: transparent;
+}
+
+.Wt-popupmenu li:hover {
+    background: var(--brand-color);
+}
+
+.Wt-popupmenu a {
+    text-decoration: none;
+    color: black;
+}

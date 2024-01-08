@@ -1,0 +1,33 @@
+# CMake
+build/
+cmake-build-*/
+
+# CLion
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+.DS_Store
+
+# clangd
+.cache/
+compile_commands.json
+
+# Doxygen
+doxygen/
+
+# SQLite
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# User file folder
+userFiles/*
+!userFiles/.keep
+
+# Packaged ZIP files
+dist/

@@ -1,0 +1,8 @@
+CMakeLists.txt
+docroot/*
+docs/*
+Doxyfile
+README.md
+src/*
+userFiles/.keep
+wt_config.xml

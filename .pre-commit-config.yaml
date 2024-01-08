@@ -1,0 +1,45 @@
+exclude: ^docroot/resources/
+repos:
+  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
+    rev: 'v4.4.0'
+    hooks:
+      - id: 'destroyed-symlinks'
+      - id: 'end-of-file-fixer'
+      - id: 'trailing-whitespace'
+      - id: 'check-merge-conflict'
+
+  - repo: 'https://github.com/cheshirekow/cmake-format-precommit'
+    rev: 'v0.6.13'
+    hooks:
+      - id: 'cmake-format'
+      - id: 'cmake-lint'
+
+  - repo: 'https://github.com/doublify/pre-commit-clang-format'
+    rev: '62302476d0da01515660132d76902359bed0f782'
+    hooks:
+      - id: 'clang-format'
+
+  - repo: local
+    hooks:
+      - id: 'update-file-comments'
+        name: 'update file comments'
+        description: 'Updates comments at the start of files'
+        entry: 'scripts/update-file-comments.py'
+        language: 'python'
+        files: '\.(h|hpp|hxx)$'
+
+      - id: 'doxygen'
+        name: 'doxygen'
+        description: 'Ensures everything is documented.'
+        entry: 'doxygen'
+        language: 'system'
+        files: '\.(c|cc|cxx|cpp|h|hpp|hxx)$'
+        pass_filenames: false
+
+      - id: 'clang-tidy'
+        name: 'clang-tidy'
+        description: 'Analyzes files with clang-tidy.'
+        entry: 'scripts/run-clang-tidy.py'
+        language: 'python'
+        files: '\.(c|cc|cxx|cpp|h|hpp|hxx)$'
+        args: ['-warnings-as-errors=*']
